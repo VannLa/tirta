@@ -10,7 +10,13 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 class Warga extends Model
 {
     protected $table = 'wargas';
-    protected $fillable = ['kategori_tarif_id', 'nomor_rumah', 'nama_warga', 'nomor_telepon', 'status_aktif'];
+    protected $fillable = ['user_id','kategori_tarif_id', 'nomor_rumah', 'nama_warga', 'nomor_telepon', 'status_aktif'];
+
+    public function user(): BelongsTo
+    {
+        return $this->belongsTo(User::class, 'user_id');
+    }
+
  
     public function kategoriTarif(): BelongsTo
     {
